@@ -1,0 +1,30 @@
+service: serverless-websocket
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: ap-northeast-2
+  profile: realworld
+  
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:PutItem'
+        - 'dynamodb:GetItem'
+        - 'dynamodb:UpdateItem'
+        - 'dynamodb:DeleteItem'
+        - 'dynamodb:BatchGetItem'
+        - 'dynamodb:BatchWriteItem'
+        - 'dynamodb:Scan'
+        - 'dynamodb:Query'
+      Resource:
+        - 'arn:aws:dynamodb:ap-northeast-2:*:*'
+
+functions:
+  ping:
+    handler: handler.ping
+    events:
+      - http:
+          path: ping
+          method: get
+
