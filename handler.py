@@ -1,5 +1,5 @@
 import boto3
-import logger
+import logging
 import json
 
 logger = logging.getLogger("handler_logger")
