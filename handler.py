@@ -1,7 +1,11 @@
-import json
+import boto3
 import logger
+import json
+
 logger = logging.getLogger("handler_logger")
 logger.setLevel(logging.DEBUG)
+
+dynamodb = boto3.resource("dynamodb")
 
 def send_message(event, context):
 
